@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+<p id="notice"><%= notice %></p>
+
+<h1>Doctors</h1>
+
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Phone</th>
+      <th>Specialization</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @doctors.each do |doctor| %>
+      <tr>
+        <td><%= doctor.name %></td>
+        <td><%= doctor.phone %></td>
+        <td><%= doctor.specialization %></td>
+        <td><%= link_to 'Show', doctor %> | 
+        <%= link_to 'Edit', edit_doctor_path(doctor) %> |
+        <%= link_to 'Destroy', doctor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Doctor', new_doctor_path, class: 'btn btn-success' %>
+</div>
+  </div>
+</div>

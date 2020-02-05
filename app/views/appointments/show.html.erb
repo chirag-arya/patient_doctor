@@ -1,0 +1,35 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<p id="notice"><%= notice %></p>
+	
+			<!-- <p>
+			  <strong>Appointment Date:</strong>
+			  <%#= @appointment.appointment_date %>
+			</p> -->
+			<p>
+			  <strong>Appointment Date & Time:</strong>
+			  <%= @appointment.appointment_time %>
+			</p>
+			<p>
+			  <strong>Doctor Name:</strong>
+			  <%= @appointment.doctor.name %>
+			</p>
+
+			<p>
+			  <strong>Patient Name:</strong>
+			  <%= @appointment.patient.name %>
+			</p>
+
+			<p>
+			  <strong>Diseases:</strong>
+			  <%= @appointment.diseases %>
+			</p>
+
+			<%= link_to 'Edit', edit_appointment_path(@appointment), class: 'btn btn-info' %> |
+			<%= link_to 'Back', appointments_path, class: 'btn btn-secondary' %>
+		</div>
+	</div>
+</div>
+
+

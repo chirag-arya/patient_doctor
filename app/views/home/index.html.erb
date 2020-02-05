@@ -1,0 +1,171 @@
+
+	<br/>
+	<br/>
+
+	<div class="container">
+		
+		<div class="row">
+
+			<!-- Patient -->
+			<div class="col-md-6">
+				<h2 class="title text-center" style="color: #0b4380;">PATIENT</h2><hr/><br/>
+		      <%= form_for(@patient, local: true) do |form| %>
+		        <% if @patient.errors.any? %>
+		          <div id="error_explanation">
+		            <h2><%= pluralize(@patient.errors.count, "error") %> prohibited this patient from being saved:</h2>
+
+		            <ul>
+		            <% @patient.errors.full_messages.each do |message| %>
+		              <li><%= message %></li>
+		            <% end %>
+		            </ul>
+		          </div>
+		        <% end %>
+
+		        <div class="form-group required">
+		          <%= form.label :name, :class=>"control-label" %>
+		          <%= form.text_field :name, id: :patient_name, class: 'form-control', required: 'required' %>
+		        </div>
+
+		        <div class="form-group required">
+		          <%= form.label :phone, :class=>"control-label" %>
+		          <%= form.text_field :phone, id: :patient_phone, class: 'form-control', required: 'required' %>
+		        </div>
+
+		        <div class="actions text-right">
+		          <%= form.submit 'Submit', class: 'btn btn-warning' %>
+		        </div>
+		      <% end %>
+    
+			</div>
+
+			<!-- Doctor -->
+			<div class="col-md-6">
+				<h2 class="title text-center" style="color: #0b4380;">DOCTOR</h2><hr/><br/>
+		      <%= form_for(@doctor, local: true) do |form| %>
+		        <% if @doctor.errors.any? %>
+		          <div id="error_explanation">
+		            <h2><%= pluralize(@doctor.errors.count, "error") %> prohibited this doctor from being saved:</h2>
+
+		            <ul>
+		            <% @doctor.errors.full_messages.each do |message| %>
+		              <li><%= message %></li>
+		            <% end %>
+		            </ul>
+		          </div>
+		        <% end %>
+
+		        <div class="form-group required">
+		          <%= form.label :name, :class=>"control-label" %>
+		          <%= form.text_field :name, id: :doctor_name, class: 'form-control', required: 'required' %>
+		        </div>
+
+		        <div class="form-group required">
+		          <%= form.label :phone, :class=>"control-label" %>
+		          <%= form.text_field :phone, id: :doctor_phone, class: 'form-control', required: 'required' %>
+		        </div>
+
+		        <div class="form-group required">
+		          <%= form.label :specialization, :class=>"control-label" %>
+		          <%= form.text_field :specialization, id: :doctor_specialization, class: 'form-control', required: 'required' %>
+		        </div>
+
+		        <div class="actions text-right">
+		          <%= form.submit 'Submit', class: 'btn btn-warning' %>
+		        </div>
+		      <% end %>
+    		</div>
+
+
+		</div>
+
+		<br/><br/>
+
+		<div class="row">
+		<!-- Appointment -->
+			<div class="col-md-6">
+				<h2 class="title text-center" style="color: #0b4380;">APPOINTMENT</h2><hr/><br/>
+		      
+    			<%= form_for(@appointment, local: true) do |form| %>
+			        <% if @appointment.errors.any? %>
+			          <div id="error_explanation">
+			            <h2><%= pluralize(@appointment.errors.count, "error") %> prohibited this appointment from being saved:</h2>
+
+			            <ul>
+			              <% @appointment.errors.full_messages.each do |message| %>
+			                <li><%= message %></li>
+			              <% end %>
+			            </ul>
+			          </div>
+			        <% end %>
+
+			        
+			        <div class="form-group required">
+			          <%= form.label :doctor_id, :class=>"control-label" %>
+			          <%= form.select :doctor_id, Doctor.all.collect {|t| [t.name, t.id]}, {prompt: '-- Select Doctor Name --'}, class: 'form-control', required: 'required' %>
+			        </div>
+
+			        <div class="form-group required">
+			          <%= form.label :patient_id, :class=>"control-label" %>
+			          <%#= form.number_field :patient_id, id: :appointment_patient_id, class: 'form-control' %>
+			          <%= form.select :patient_id, Patient.all.collect {|t| [t.name, t.id]}, {prompt: '-- Select Patient Name --'}, class: 'form-control', required: 'required' %>
+			        </div>
+
+			        <div class="form-group">
+			          <%= form.label :diseases %>
+			          <%= form.text_field :diseases, id: :appointment_diseases, class: 'form-control' %>
+			        </div>
+
+			        <div class="row">
+			        	<div class="col-md-6">
+			        		<div class="form-group">
+					          <%= form.label :appointment_date %><br>
+					          <%= form.date_select :appointment_date, selected: Date.today, max: 1.year.from_now, class: 'form-control' %>
+					        </div>
+			        	</div>
+			        	<div class="col-md-6">
+			        		<div class="form-group">
+					          <%= form.label :appointment_time %><br>
+					          <%= form.time_select :appointment_time %>
+					        </div>
+			        	</div>
+			        </div>
+
+			        <div class="actions text-right">
+			          <%= form.submit 'Submit', class: 'btn btn-warning' %>
+			        </div>
+
+      			<% end %>
+			</div>
+
+			<!-- Doctor -->
+			<div class="col-md-6">
+				<h2 class="title text-center" style="color: #0b4380;">VIEW APPOINTMENT</h2><hr/><br/>
+				<table class="table table-bordered table-hover">
+			          <thead  style="background-color: #0b4380;">
+			            <tr class="title text-center" style="color: #fff;">
+			              <th>Appointment Date & Time</th>
+			              <th>Doctor Name</th>
+			              <th>Patient Name</th>
+			              <th>Diseases</th>
+			              <th>Cancel Appointment</th>
+			            </tr>
+			          </thead>
+
+			        <tbody>
+			          <% @appointments.each do |appointment| %>
+			            <tr>
+			              <td><%= appointment.appointment_time %></td>
+			              <td><%= appointment.doctor.name %></td>
+			              <td><%= appointment.patient.name %></td>
+			              <td><%= appointment.diseases %></td>
+			              <td><%= link_to "Cancel appointment", appointment_path(appointment), method: :delete, class: 'btn btn-outline-primary' %></td>
+			            </tr>
+			          <% end %>
+			        </tbody>
+		      	</table>
+    		</div>
+		</div>
+	</div>
+	<br/>
+	<br/>

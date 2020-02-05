@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+
+      <%= form_with(model: appointment, local: true) do |form| %>
+        <% if appointment.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(appointment.errors.count, "error") %> prohibited this appointment from being saved:</h2>
+
+            <ul>
+              <% appointment.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <div class="form-group">
+          <%= form.label :appointment_date %><br>
+          <%= form.date_select :appointment_date %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :appointment_time %><br>
+          <%= form.time_select :appointment_time %>
+        </div>
+  
+        <div class="form-group">
+          <%= form.label :doctor_id %>
+          <%= form.select :doctor_id, Doctor.all.collect {|t| [t.name, t.id]}, {prompt: '-- Select Doctor Name --'}, class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :patient_id %>
+          <%#= form.number_field :patient_id, id: :appointment_patient_id, class: 'form-control' %>
+          <%= form.select :patient_id, Patient.all.collect {|t| [t.name, t.id]}, {prompt: '-- Select Patient Name --'}, class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :diseases %>
+          <%= form.text_field :diseases, id: :appointment_diseases, class: 'form-control' %>
+        </div>
+
+        <div class="actions">
+          <%= form.submit class: 'btn btn-success' %> | <%= link_to 'Back', appointments_path, class: 'btn btn-primary' %>
+        </div>
+
+      <% end %>
+
+    </div>   
+  </div>
+</div>
+
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.datepicker').datepicker();
+  });
+</script>

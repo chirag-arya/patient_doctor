@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <p id="notice"><%= notice %></p>
+
+      <h1>Appointments</h1>
+
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <th>Appointment Date & Time</th>
+              <th>Doctor Name</th>
+              <th>Patient Name</th>
+              <th>Diseases</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+
+        <tbody>
+          <% @appointments.each do |appointment| %>
+            <tr>
+              <!-- <td><%#= appointment.appointment_date %></td> -->
+              <td><%= appointment.appointment_time %></td>
+              <td><%= appointment.doctor.name %></td>
+              <td><%= appointment.patient.name %></td>
+              <td><%= appointment.diseases %></td>
+              <td><%= link_to 'Show', appointment %> |
+              <%= link_to 'Edit', edit_appointment_path(appointment) %> |
+              <%= link_to 'Destroy', appointment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <br>
+
+      <%= link_to 'New appointment', new_appointment_path, class: 'btn btn-success' %>
+
+    </div>
+  </div>
+</div>
+
+
+

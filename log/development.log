@@ -1,0 +1,603 @@
+  [1m[35m (0.3ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS `appointments` CASCADE[0m
+  [1m[35m (210.9ms)[0m  [1m[35mCREATE TABLE `appointments` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `doctor_id` int, `patient_id` int, `diseases` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL, `appointment_date` datetime, `appointment_time` datetime) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS `bookings` CASCADE[0m
+  [1m[35m (190.2ms)[0m  [1m[35mCREATE TABLE `bookings` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `doctor_id` int, `patient_id` int, `diseases` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL, `appointment_date` date) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS `doctors` CASCADE[0m
+  [1m[35m (171.3ms)[0m  [1m[35mCREATE TABLE `doctors` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `phone` varchar(255), `specialization` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS `patients` CASCADE[0m
+  [1m[35m (176.6ms)[0m  [1m[35mCREATE TABLE `patients` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `phone` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS `users` CASCADE[0m
+  [1m[35m (259.5ms)[0m  [1m[35mCREATE TABLE `users` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `email` varchar(255) DEFAULT '' NOT NULL, `encrypted_password` varchar(255) DEFAULT '' NOT NULL, `reset_password_token` varchar(255), `reset_password_sent_at` datetime, `remember_created_at` datetime, `sign_in_count` int DEFAULT 0 NOT NULL, `current_sign_in_at` datetime, `last_sign_in_at` datetime, `current_sign_in_ip` varchar(255), `last_sign_in_ip` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL, UNIQUE INDEX `index_users_on_email`  (`email`), UNIQUE INDEX `index_users_on_reset_password_token`  (`reset_password_token`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (177.4ms)[0m  [1m[35mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL PRIMARY KEY) ENGINE=InnoDB[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (29.7ms)[0m  [1m[32mINSERT INTO `schema_migrations` (version) VALUES (20180509092241)[0m
+  [1m[35m (25.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (version) VALUES
+(20180508071046),
+(20180508070722),
+(20180508173209),
+(20180507184436),
+(20180507184824);
+
+[0m
+  [1m[35m (226.7ms)[0m  [1m[35mCREATE TABLE `ar_internal_metadata` (`key` varchar(255) NOT NULL PRIMARY KEY, `value` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO `ar_internal_metadata` (`key`, `value`, `created_at`, `updated_at`) VALUES ('environment', 'development', '2020-02-05 14:45:25', '2020-02-05 14:45:25')[0m
+  [1m[35m (24.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS `appointments` CASCADE[0m
+  [1m[35m (177.2ms)[0m  [1m[35mCREATE TABLE `appointments` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `doctor_id` int, `patient_id` int, `diseases` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL, `appointment_date` datetime, `appointment_time` datetime) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS `bookings` CASCADE[0m
+  [1m[35m (180.1ms)[0m  [1m[35mCREATE TABLE `bookings` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `doctor_id` int, `patient_id` int, `diseases` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL, `appointment_date` date) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS `doctors` CASCADE[0m
+  [1m[35m (177.7ms)[0m  [1m[35mCREATE TABLE `doctors` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `phone` varchar(255), `specialization` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS `patients` CASCADE[0m
+  [1m[35m (179.0ms)[0m  [1m[35mCREATE TABLE `patients` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `phone` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS `users` CASCADE[0m
+  [1m[35m (234.8ms)[0m  [1m[35mCREATE TABLE `users` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `email` varchar(255) DEFAULT '' NOT NULL, `encrypted_password` varchar(255) DEFAULT '' NOT NULL, `reset_password_token` varchar(255), `reset_password_sent_at` datetime, `remember_created_at` datetime, `sign_in_count` int DEFAULT 0 NOT NULL, `current_sign_in_at` datetime, `last_sign_in_at` datetime, `current_sign_in_ip` varchar(255), `last_sign_in_ip` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL, UNIQUE INDEX `index_users_on_email`  (`email`), UNIQUE INDEX `index_users_on_reset_password_token`  (`reset_password_token`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (204.4ms)[0m  [1m[35mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL PRIMARY KEY) ENGINE=InnoDB[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (24.1ms)[0m  [1m[32mINSERT INTO `schema_migrations` (version) VALUES (20180509092241)[0m
+  [1m[35m (25.4ms)[0m  [1m[32mINSERT INTO `schema_migrations` (version) VALUES
+(20180508071046),
+(20180508070722),
+(20180508173209),
+(20180507184436),
+(20180507184824);
+
+[0m
+  [1m[35m (229.3ms)[0m  [1m[35mCREATE TABLE `ar_internal_metadata` (`key` varchar(255) NOT NULL PRIMARY KEY, `value` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO `ar_internal_metadata` (`key`, `value`, `created_at`, `updated_at`) VALUES ('environment', 'development', '2020-02-05 14:45:27', '2020-02-05 14:45:27')[0m
+  [1m[35m (29.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE `ar_internal_metadata` SET `value` = 'test' WHERE `ar_internal_metadata`.`key` = 'environment'[0m
+  [1m[35m (22.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT GET_LOCK('6446482740582143070', 0)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT RELEASE_LOCK('6446482740582143070')[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Started GET "/" for 127.0.0.1 at 2020-02-05 20:16:02 +0530
+  [1m[35m (0.6ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 15ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2020-02-05 20:16:02 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (8.2ms)
+  Rendered shared/_navbar.html.erb (0.5ms)
+Completed 200 OK in 839ms (Views: 819.5ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2020-02-05 20:17:55 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (2.6ms)
+  Rendered shared/_navbar.html.erb (0.5ms)
+Completed 200 OK in 23ms (Views: 22.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2020-02-05 20:18:04 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (1.8ms)
+  Rendered shared/_navbar.html.erb (0.5ms)
+Completed 200 OK in 23ms (Views: 22.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2020-02-05 20:18:22 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (1.9ms)
+  Rendered shared/_navbar.html.erb (0.5ms)
+Completed 200 OK in 24ms (Views: 23.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2020-02-05 20:18:34 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (1.8ms)
+  Rendered shared/_navbar.html.erb (0.4ms)
+Completed 200 OK in 21ms (Views: 20.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2020-02-05 20:18:43 +0530
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.3ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (4.7ms)
+  Rendered shared/_navbar.html.erb (0.6ms)
+Completed 200 OK in 35ms (Views: 34.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2020-02-05 20:19:35 +0530
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"TB+crd8NI8EH6ebeTVSFM3ig9bzIWzCOTc+CC+yWE0Oj9VlNtdBpHDYpWD/ky+fx+6p7QHbSxgYdpnf8vdgNFQ==", "user"=>{"email"=>"chiraga@chetu.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'chiraga@chetu.com' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (0.9ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (3.8ms)
+  Rendered shared/_navbar.html.erb (0.6ms)
+Completed 200 OK in 206ms (Views: 22.4ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2020-02-05 20:19:45 +0530
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"l9OvQRHU9ZfkIcLuYbUJ/J15TPznZ3OehXHUfqasoc26YzXI92vDAGDWT4d1iNh/r4scF100ra2UW70JcLI17Q==", "user"=>{"email"=>"chiraga@chetu.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'chiraga@chetu.com' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO `users` (`email`, `encrypted_password`, `created_at`, `updated_at`) VALUES ('chiraga@chetu.com', '$2a$11$4gs2wVzljTIYRV3cvWEknO6hhMvgekUECOITTyF6Hz30OKfbfUDp2', '2020-02-05 14:49:45', '2020-02-05 14:49:45')[0m
+  [1m[35m (34.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE `users` SET `sign_in_count` = 1, `current_sign_in_at` = '2020-02-05 14:49:45', `last_sign_in_at` = '2020-02-05 14:49:45', `current_sign_in_ip` = '127.0.0.1', `last_sign_in_ip` = '127.0.0.1' WHERE `users`.`id` = 1[0m
+  [1m[35m (22.6ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 231ms (ActiveRecord: 58.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2020-02-05 20:19:45 +0530
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mDoctor Load (0.4ms)[0m  [1m[34mSELECT `doctors`.* FROM `doctors`[0m
+  [1m[36mPatient Load (0.4ms)[0m  [1m[34mSELECT `patients`.* FROM `patients`[0m
+  [1m[36mAppointment Load (0.5ms)[0m  [1m[34mSELECT `appointments`.* FROM `appointments`[0m
+  Rendered home/index.html.erb within layouts/application (15.3ms)
+  Rendered shared/_navbar.html.erb (0.5ms)
+Completed 200 OK in 82ms (Views: 33.7ms | ActiveRecord: 4.9ms)
+
+
+Started POST "/doctors" for 127.0.0.1 at 2020-02-05 20:21:18 +0530
+Processing by DoctorsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"0iTpJi2mm5dKGPGtTUaGJ6PTt9psTk+SBFQ/aPpfuvv/lHOvyxmtAM7vfMRZe1ekkSHnMdYdkaEVflYfLEEu2w==", "doctor"=>{"name"=>"First Doc", "phone"=>"9898989898", "specialization"=>"Malaria"}, "commit"=>"Submit"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+Completed 500 Internal Server Error in 22ms (ActiveRecord: 0.8ms)
+
+
+  
+NoMethodError (undefined method `spacialization' for #<Doctor:0x00007ff014ace250>
+Did you mean?  specialization
+               specialization?
+               specialization=):
+  
+app/controllers/doctors_controller.rb:30:in `block in create'
+app/controllers/doctors_controller.rb:29:in `create'
+Started POST "/doctors" for 127.0.0.1 at 2020-02-05 20:22:29 +0530
+  [1m[35m (0.3ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by DoctorsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"0iTpJi2mm5dKGPGtTUaGJ6PTt9psTk+SBFQ/aPpfuvv/lHOvyxmtAM7vfMRZe1ekkSHnMdYdkaEVflYfLEEu2w==", "doctor"=>{"name"=>"First Doc", "phone"=>"9898989898", "specialization"=>"Malaria"}, "commit"=>"Submit"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+Completed 500 Internal Server Error in 86024ms (ActiveRecord: 6.8ms)
+
+
+  
+NoMethodError (undefined method `spacialization' for #<Doctor:0x00007f09984ff9e0>
+Did you mean?  specialization
+               specialization?
+               specialization=):
+  
+app/controllers/doctors_controller.rb:31:in `block in create'
+app/controllers/doctors_controller.rb:29:in `create'
+Started POST "/doctors" for 127.0.0.1 at 2020-02-05 20:23:58 +0530
+Processing by DoctorsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"0iTpJi2mm5dKGPGtTUaGJ6PTt9psTk+SBFQ/aPpfuvv/lHOvyxmtAM7vfMRZe1ekkSHnMdYdkaEVflYfLEEu2w==", "doctor"=>{"name"=>"First Doc", "phone"=>"9898989898", "specialization"=>"Malaria"}, "commit"=>"Submit"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO `doctors` (`name`, `phone`, `specialization`, `created_at`, `updated_at`) VALUES ('First Doc', '9898989898', 'Malaria', '2020-02-05 14:53:59', '2020-02-05 14:53:59')[0m
+  [1m[35m (97.1ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 1373ms (ActiveRecord: 101.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2020-02-05 20:23:59 +0530
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mDoctor Load (0.3ms)[0m  [1m[34mSELECT `doctors`.* FROM `doctors`[0m
+  [1m[36mPatient Load (0.4ms)[0m  [1m[34mSELECT `patients`.* FROM `patients`[0m
+  [1m[36mAppointment Load (0.4ms)[0m  [1m[34mSELECT `appointments`.* FROM `appointments`[0m
+  Rendered home/index.html.erb within layouts/application (26.9ms)
+  Rendered shared/_navbar.html.erb (0.7ms)
+Completed 200 OK in 293ms (Views: 256.8ms | ActiveRecord: 5.5ms)
+
+
+Started POST "/patients" for 127.0.0.1 at 2020-02-05 20:39:57 +0530
+Processing by PatientsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"NHt3PdeGunmlW1/8Kn7Pw9s/Fass4tZDCU43LY95iyIZy+20MTmM7iGs0pU+Qx5A6c1FQJaxCHAYZF5aWWcfAg==", "patient"=>{"name"=>"test patient", "phone"=>"0909090909"}, "commit"=>"Submit"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO `patients` (`name`, `phone`, `created_at`, `updated_at`) VALUES ('test patient', '0909090909', '2020-02-05 15:09:57', '2020-02-05 15:09:57')[0m
+  [1m[35m (93.2ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 129ms (ActiveRecord: 97.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2020-02-05 20:39:57 +0530
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mDoctor Load (0.4ms)[0m  [1m[34mSELECT `doctors`.* FROM `doctors`[0m
+  [1m[36mPatient Load (0.4ms)[0m  [1m[34mSELECT `patients`.* FROM `patients`[0m
+  [1m[36mAppointment Load (0.4ms)[0m  [1m[34mSELECT `appointments`.* FROM `appointments`[0m
+  Rendered home/index.html.erb within layouts/application (11.8ms)
+  Rendered shared/_navbar.html.erb (0.5ms)
+Completed 200 OK in 60ms (Views: 29.7ms | ActiveRecord: 6.1ms)
+
+
+Started POST "/appointments" for 127.0.0.1 at 2020-02-05 20:40:14 +0530
+Processing by AppointmentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"laW+zgivtRGSYG3yPbAM/qzgm4gMFf8adSPC0oKV3E+4FSRH7hCDhhaX4Jspjd19nhLLY7ZGISlkCaulVItIbw==", "appointment"=>{"doctor_id"=>"1", "patient_id"=>"1", "diseases"=>"malaria", "appointment_date(1i)"=>"2020", "appointment_date(2i)"=>"2", "appointment_date(3i)"=>"5", "appointment_time(1i)"=>"2020", "appointment_time(2i)"=>"2", "appointment_time(3i)"=>"5", "appointment_time(4i)"=>"15", "appointment_time(5i)"=>"09"}, "commit"=>"Submit"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDoctor Load (0.4ms)[0m  [1m[34mSELECT  `doctors`.* FROM `doctors` WHERE `doctors`.`id` = 1 LIMIT 1[0m
+  [1m[36mPatient Load (1.0ms)[0m  [1m[34mSELECT  `patients`.* FROM `patients` WHERE `patients`.`id` = 1 LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO `appointments` (`doctor_id`, `patient_id`, `diseases`, `created_at`, `updated_at`, `appointment_date`, `appointment_time`) VALUES (1, 1, 'malaria', '2020-02-05 15:10:15', '2020-02-05 15:10:15', '2020-02-05 00:00:00', '2020-02-05 15:09:00')[0m
+  [1m[35m (36.4ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 88ms (ActiveRecord: 38.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2020-02-05 20:40:15 +0530
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mDoctor Load (0.5ms)[0m  [1m[34mSELECT `doctors`.* FROM `doctors`[0m
+  [1m[36mPatient Load (0.4ms)[0m  [1m[34mSELECT `patients`.* FROM `patients`[0m
+  [1m[36mAppointment Load (0.5ms)[0m  [1m[34mSELECT `appointments`.* FROM `appointments`[0m
+  [1m[36mDoctor Load (0.4ms)[0m  [1m[34mSELECT  `doctors`.* FROM `doctors` WHERE `doctors`.`id` = 1 LIMIT 1[0m
+  [1m[36mPatient Load (0.4ms)[0m  [1m[34mSELECT  `patients`.* FROM `patients` WHERE `patients`.`id` = 1 LIMIT 1[0m
+  Rendered home/index.html.erb within layouts/application (16.2ms)
+  Rendered shared/_navbar.html.erb (0.4ms)
+Completed 200 OK in 38ms (Views: 33.7ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2020-02-05 20:42:03 +0530
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mDoctor Load (0.3ms)[0m  [1m[34mSELECT `doctors`.* FROM `doctors`[0m
+  [1m[36mPatient Load (0.4ms)[0m  [1m[34mSELECT `patients`.* FROM `patients`[0m
+  [1m[36mAppointment Load (0.4ms)[0m  [1m[34mSELECT `appointments`.* FROM `appointments`[0m
+  [1m[36mDoctor Load (0.3ms)[0m  [1m[34mSELECT  `doctors`.* FROM `doctors` WHERE `doctors`.`id` = 1 LIMIT 1[0m
+  [1m[36mPatient Load (0.3ms)[0m  [1m[34mSELECT  `patients`.* FROM `patients` WHERE `patients`.`id` = 1 LIMIT 1[0m
+  Rendered home/index.html.erb within layouts/application (16.9ms)
+  Rendered shared/_navbar.html.erb (0.5ms)
+Completed 200 OK in 38ms (Views: 34.1ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2020-02-05 20:42:20 +0530
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mDoctor Load (1.6ms)[0m  [1m[34mSELECT `doctors`.* FROM `doctors`[0m
+  [1m[36mPatient Load (0.4ms)[0m  [1m[34mSELECT `patients`.* FROM `patients`[0m
+  [1m[36mAppointment Load (0.4ms)[0m  [1m[34mSELECT `appointments`.* FROM `appointments`[0m
+  [1m[36mDoctor Load (0.3ms)[0m  [1m[34mSELECT  `doctors`.* FROM `doctors` WHERE `doctors`.`id` = 1 LIMIT 1[0m
+  [1m[36mPatient Load (0.4ms)[0m  [1m[34mSELECT  `patients`.* FROM `patients` WHERE `patients`.`id` = 1 LIMIT 1[0m
+  Rendered home/index.html.erb within layouts/application (16.2ms)
+  Rendered shared/_navbar.html.erb (0.4ms)
+Completed 200 OK in 39ms (Views: 32.6ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2020-02-05 20:42:27 +0530
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mDoctor Load (0.3ms)[0m  [1m[34mSELECT `doctors`.* FROM `doctors`[0m
+  [1m[36mPatient Load (0.3ms)[0m  [1m[34mSELECT `patients`.* FROM `patients`[0m
+  [1m[36mAppointment Load (0.3ms)[0m  [1m[34mSELECT `appointments`.* FROM `appointments`[0m
+  [1m[36mDoctor Load (0.3ms)[0m  [1m[34mSELECT  `doctors`.* FROM `doctors` WHERE `doctors`.`id` = 1 LIMIT 1[0m
+  [1m[36mPatient Load (0.3ms)[0m  [1m[34mSELECT  `patients`.* FROM `patients` WHERE `patients`.`id` = 1 LIMIT 1[0m
+  Rendered home/index.html.erb within layouts/application (16.3ms)
+  Rendered shared/_navbar.html.erb (0.5ms)
+Completed 200 OK in 37ms (Views: 33.2ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2020-02-05 20:43:42 +0530
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mDoctor Load (0.4ms)[0m  [1m[34mSELECT `doctors`.* FROM `doctors`[0m
+  [1m[36mPatient Load (0.4ms)[0m  [1m[34mSELECT `patients`.* FROM `patients`[0m
+  [1m[36mAppointment Load (1.2ms)[0m  [1m[34mSELECT `appointments`.* FROM `appointments`[0m
+  [1m[36mDoctor Load (0.4ms)[0m  [1m[34mSELECT  `doctors`.* FROM `doctors` WHERE `doctors`.`id` = 1 LIMIT 1[0m
+  [1m[36mPatient Load (0.3ms)[0m  [1m[34mSELECT  `patients`.* FROM `patients` WHERE `patients`.`id` = 1 LIMIT 1[0m
+  Rendered home/index.html.erb within layouts/application (16.8ms)
+  Rendered shared/_navbar.html.erb (0.5ms)
+Completed 200 OK in 39ms (Views: 33.5ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2020-02-05 20:44:36 +0530
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mDoctor Load (1.4ms)[0m  [1m[34mSELECT `doctors`.* FROM `doctors`[0m
+  [1m[36mPatient Load (0.4ms)[0m  [1m[34mSELECT `patients`.* FROM `patients`[0m
+  [1m[36mAppointment Load (0.3ms)[0m  [1m[34mSELECT `appointments`.* FROM `appointments`[0m
+  [1m[36mDoctor Load (0.4ms)[0m  [1m[34mSELECT  `doctors`.* FROM `doctors` WHERE `doctors`.`id` = 1 LIMIT 1[0m
+  [1m[36mPatient Load (0.4ms)[0m  [1m[34mSELECT  `patients`.* FROM `patients` WHERE `patients`.`id` = 1 LIMIT 1[0m
+  Rendered home/index.html.erb within layouts/application (16.4ms)
+  Rendered shared/_navbar.html.erb (0.5ms)
+Completed 200 OK in 37ms (Views: 32.0ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/rails/info/routes" for 127.0.0.1 at 2020-02-05 20:46:00 +0530
+Processing by Rails::InfoController#routes as HTML
+  Rendering /home/chirag/.rvm/gems/ruby-2.7.0/gems/railties-5.1.6/lib/rails/templates/rails/info/routes.html.erb within layouts/application
+  Rendered collection of /home/chirag/.rvm/gems/ruby-2.7.0/gems/actionpack-5.1.6/lib/action_dispatch/middleware/templates/routes/_route.html.erb [40 times] (32.7ms)
+  Rendered /home/chirag/.rvm/gems/ruby-2.7.0/gems/actionpack-5.1.6/lib/action_dispatch/middleware/templates/routes/_table.html.erb (12.7ms)
+  Rendered /home/chirag/.rvm/gems/ruby-2.7.0/gems/railties-5.1.6/lib/rails/templates/rails/info/routes.html.erb within layouts/application (63.0ms)
+Completed 200 OK in 69ms (Views: 66.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2020-02-05 20:46:54 +0530
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mDoctor Load (0.4ms)[0m  [1m[34mSELECT `doctors`.* FROM `doctors`[0m
+  [1m[36mPatient Load (0.8ms)[0m  [1m[34mSELECT `patients`.* FROM `patients`[0m
+  [1m[36mAppointment Load (0.4ms)[0m  [1m[34mSELECT `appointments`.* FROM `appointments`[0m
+  [1m[36mDoctor Load (0.3ms)[0m  [1m[34mSELECT  `doctors`.* FROM `doctors` WHERE `doctors`.`id` = 1 LIMIT 1[0m
+  [1m[36mPatient Load (0.3ms)[0m  [1m[34mSELECT  `patients`.* FROM `patients` WHERE `patients`.`id` = 1 LIMIT 1[0m
+  Rendered home/index.html.erb within layouts/application (15.3ms)
+  Rendered shared/_navbar.html.erb (0.5ms)
+Completed 200 OK in 36ms (Views: 31.2ms | ActiveRecord: 2.7ms)
+
+
+Started DELETE "/appointments/1" for 127.0.0.1 at 2020-02-05 20:46:56 +0530
+Processing by AppointmentsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"Q3DY5zjHDnaNEUGD3y3SX4yp5xPGFnQz22K89RvhGq1uwEJu3ng44QnmzOrLEAPcvlu3+HxFqgDKSNWCzf+OjQ==", "id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mAppointment Load (0.4ms)[0m  [1m[34mSELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (3.2ms)[0m  [1m[31mDELETE FROM `appointments` WHERE `appointments`.`id` = 1[0m
+  [1m[35m (78.7ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/appointments
+Completed 302 Found in 88ms (ActiveRecord: 83.0ms)
+
+
+Started GET "/appointments" for 127.0.0.1 at 2020-02-05 20:46:57 +0530
+Processing by AppointmentsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering appointments/index.html.erb within layouts/application
+  [1m[36mAppointment Load (0.4ms)[0m  [1m[34mSELECT `appointments`.* FROM `appointments`[0m
+  Rendered appointments/index.html.erb within layouts/application (1.8ms)
+  Rendered shared/_navbar.html.erb (0.5ms)
+Completed 200 OK in 25ms (Views: 21.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/appointments/new" for 127.0.0.1 at 2020-02-05 20:47:18 +0530
+Processing by AppointmentsController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering appointments/new.html.erb within layouts/application
+  [1m[36mDoctor Load (0.4ms)[0m  [1m[34mSELECT `doctors`.* FROM `doctors`[0m
+  [1m[36mPatient Load (1.3ms)[0m  [1m[34mSELECT `patients`.* FROM `patients`[0m
+  Rendered appointments/_form.html.erb (30.8ms)
+  Rendered appointments/new.html.erb within layouts/application (31.7ms)
+  Rendered shared/_navbar.html.erb (0.5ms)
+Completed 200 OK in 84ms (Views: 45.6ms | ActiveRecord: 7.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2020-02-05 20:47:38 +0530
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mDoctor Load (1.4ms)[0m  [1m[34mSELECT `doctors`.* FROM `doctors`[0m
+  [1m[36mPatient Load (0.4ms)[0m  [1m[34mSELECT `patients`.* FROM `patients`[0m
+  [1m[36mAppointment Load (2.2ms)[0m  [1m[34mSELECT `appointments`.* FROM `appointments`[0m
+  Rendered home/index.html.erb within layouts/application (16.3ms)
+  Rendered shared/_navbar.html.erb (0.5ms)
+Completed 200 OK in 40ms (Views: 32.6ms | ActiveRecord: 4.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2020-02-05 20:53:03 +0530
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mDoctor Load (0.4ms)[0m  [1m[34mSELECT `doctors`.* FROM `doctors`[0m
+  [1m[36mPatient Load (0.4ms)[0m  [1m[34mSELECT `patients`.* FROM `patients`[0m
+  [1m[36mAppointment Load (0.4ms)[0m  [1m[34mSELECT `appointments`.* FROM `appointments`[0m
+  Rendered home/index.html.erb within layouts/application (12.7ms)
+  Rendered shared/_navbar.html.erb (0.7ms)
+Completed 200 OK in 91ms (Views: 36.9ms | ActiveRecord: 6.3ms)
+
+
+Started POST "/appointments" for 127.0.0.1 at 2020-02-05 20:53:10 +0530
+Processing by AppointmentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Dh+C9UGmfz1v79VDqdzVa4pvZ2RDybmh00ihYMkdiawjrxh8pxlJqusYWCq94QTouJ03j/maZ5LCYsgXHwMdjA==", "appointment"=>{"doctor_id"=>"1", "patient_id"=>"1", "diseases"=>"qwer", "appointment_date(1i)"=>"2020", "appointment_date(2i)"=>"2", "appointment_date(3i)"=>"5", "appointment_time(1i)"=>"2020", "appointment_time(2i)"=>"2", "appointment_time(3i)"=>"5", "appointment_time(4i)"=>"15", "appointment_time(5i)"=>"13"}, "commit"=>"Submit"}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDoctor Load (1.5ms)[0m  [1m[34mSELECT  `doctors`.* FROM `doctors` WHERE `doctors`.`id` = 1 LIMIT 1[0m
+  [1m[36mPatient Load (0.4ms)[0m  [1m[34mSELECT  `patients`.* FROM `patients` WHERE `patients`.`id` = 1 LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `appointments` (`doctor_id`, `patient_id`, `diseases`, `created_at`, `updated_at`, `appointment_date`, `appointment_time`) VALUES (1, 1, 'qwer', '2020-02-05 15:23:10', '2020-02-05 15:23:10', '2020-02-05 00:00:00', '2020-02-05 15:13:00')[0m
+  [1m[35m (63.8ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 79ms (ActiveRecord: 67.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2020-02-05 20:53:10 +0530
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mDoctor Load (0.4ms)[0m  [1m[34mSELECT `doctors`.* FROM `doctors`[0m
+  [1m[36mPatient Load (0.3ms)[0m  [1m[34mSELECT `patients`.* FROM `patients`[0m
+  [1m[36mAppointment Load (0.4ms)[0m  [1m[34mSELECT `appointments`.* FROM `appointments`[0m
+  [1m[36mDoctor Load (0.4ms)[0m  [1m[34mSELECT  `doctors`.* FROM `doctors` WHERE `doctors`.`id` = 1 LIMIT 1[0m
+  [1m[36mPatient Load (0.6ms)[0m  [1m[34mSELECT  `patients`.* FROM `patients` WHERE `patients`.`id` = 1 LIMIT 1[0m
+  Rendered home/index.html.erb within layouts/application (18.2ms)
+  Rendered shared/_navbar.html.erb (0.5ms)
+Completed 200 OK in 40ms (Views: 35.7ms | ActiveRecord: 2.4ms)
+
+
+Started DELETE "/appointments/2" for 127.0.0.1 at 2020-02-05 20:53:13 +0530
+Processing by AppointmentsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"5w/p9H5Pm4Olvi2b1uZ6uoZZ/srWYLo4znya0Rsngf3Kv3N9mPCtFCFJoPLC26s5tKuuIWwzZAvfVvOmzTkV3Q==", "id"=>"2"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mAppointment Load (0.3ms)[0m  [1m[34mSELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`id` = 2 LIMIT 1[0m
+Redirected to http://localhost:3000/appointments
+Completed 302 Found in 4ms (ActiveRecord: 0.8ms)
+
+
+Started GET "/appointments" for 127.0.0.1 at 2020-02-05 20:53:13 +0530
+Processing by AppointmentsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering appointments/index.html.erb within layouts/application
+  [1m[36mAppointment Load (1.0ms)[0m  [1m[34mSELECT `appointments`.* FROM `appointments`[0m
+  [1m[36mDoctor Load (0.4ms)[0m  [1m[34mSELECT  `doctors`.* FROM `doctors` WHERE `doctors`.`id` = 1 LIMIT 1[0m
+  [1m[36mPatient Load (0.3ms)[0m  [1m[34mSELECT  `patients`.* FROM `patients` WHERE `patients`.`id` = 1 LIMIT 1[0m
+  Rendered appointments/index.html.erb within layouts/application (5.0ms)
+  Rendered shared/_navbar.html.erb (0.5ms)
+Completed 200 OK in 26ms (Views: 21.6ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/appointments" for 127.0.0.1 at 2020-02-05 20:53:17 +0530
+Processing by AppointmentsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering appointments/index.html.erb within layouts/application
+  [1m[36mAppointment Load (0.3ms)[0m  [1m[34mSELECT `appointments`.* FROM `appointments`[0m
+  [1m[36mDoctor Load (0.3ms)[0m  [1m[34mSELECT  `doctors`.* FROM `doctors` WHERE `doctors`.`id` = 1 LIMIT 1[0m
+  [1m[36mPatient Load (0.4ms)[0m  [1m[34mSELECT  `patients`.* FROM `patients` WHERE `patients`.`id` = 1 LIMIT 1[0m
+  Rendered appointments/index.html.erb within layouts/application (4.5ms)
+  Rendered shared/_navbar.html.erb (0.5ms)
+Completed 200 OK in 26ms (Views: 22.4ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2020-02-05 20:53:24 +0530
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mDoctor Load (0.4ms)[0m  [1m[34mSELECT `doctors`.* FROM `doctors`[0m
+  [1m[36mPatient Load (0.4ms)[0m  [1m[34mSELECT `patients`.* FROM `patients`[0m
+  [1m[36mAppointment Load (0.5ms)[0m  [1m[34mSELECT `appointments`.* FROM `appointments`[0m
+  [1m[36mDoctor Load (0.3ms)[0m  [1m[34mSELECT  `doctors`.* FROM `doctors` WHERE `doctors`.`id` = 1 LIMIT 1[0m
+  [1m[36mPatient Load (0.3ms)[0m  [1m[34mSELECT  `patients`.* FROM `patients` WHERE `patients`.`id` = 1 LIMIT 1[0m
+  Rendered home/index.html.erb within layouts/application (16.3ms)
+  Rendered shared/_navbar.html.erb (0.5ms)
+Completed 200 OK in 38ms (Views: 32.1ms | ActiveRecord: 2.3ms)
+
+
+  [1m[35m (0.4ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[36mAppointment Load (0.3ms)[0m  [1m[34mSELECT  `appointments`.* FROM `appointments` ORDER BY `appointments`.`id` DESC LIMIT 1[0m
+  [1m[36mAppointment Load (0.5ms)[0m  [1m[34mSELECT  `appointments`.* FROM `appointments` ORDER BY `appointments`.`id` DESC LIMIT 1[0m
+  [1m[36mAppointment Load (0.4ms)[0m  [1m[34mSELECT  `appointments`.* FROM `appointments` ORDER BY `appointments`.`id` DESC LIMIT 1[0m
+Started DELETE "/appointments/2" for 127.0.0.1 at 2020-02-05 21:07:06 +0530
+  [1m[35m (0.4ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by AppointmentsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"w4BEKD3j1l8FJFilnNLzOTmdd0X5biKvhR1bGaUGlkvuMN6h21zgyIHT1cyI7yK6C28nrkM9/JyUNzJucxgCaw==", "id"=>"2"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mAppointment Load (0.5ms)[0m  [1m[34mSELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`id` = 2 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[31mDELETE FROM `appointments` WHERE `appointments`.`id` = 2[0m
+  [1m[35m (60.9ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/appointments
+Completed 302 Found in 109ms (ActiveRecord: 65.5ms)
+
+
+Started GET "/appointments" for 127.0.0.1 at 2020-02-05 21:07:06 +0530
+Processing by AppointmentsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering appointments/index.html.erb within layouts/application
+  [1m[36mAppointment Load (0.3ms)[0m  [1m[34mSELECT `appointments`.* FROM `appointments`[0m
+  Rendered appointments/index.html.erb within layouts/application (2.1ms)
+  Rendered shared/_navbar.html.erb (0.5ms)
+Completed 200 OK in 191ms (Views: 187.7ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/appointments" for 127.0.0.1 at 2020-02-05 21:07:10 +0530
+Processing by AppointmentsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering appointments/index.html.erb within layouts/application
+  [1m[36mAppointment Load (0.5ms)[0m  [1m[34mSELECT `appointments`.* FROM `appointments`[0m
+  Rendered appointments/index.html.erb within layouts/application (1.9ms)
+  Rendered shared/_navbar.html.erb (0.5ms)
+Completed 200 OK in 50ms (Views: 46.2ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/appointments/new" for 127.0.0.1 at 2020-02-05 21:07:13 +0530
+Processing by AppointmentsController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering appointments/new.html.erb within layouts/application
+  [1m[36mDoctor Load (0.5ms)[0m  [1m[34mSELECT `doctors`.* FROM `doctors`[0m
+  [1m[36mPatient Load (0.6ms)[0m  [1m[34mSELECT `patients`.* FROM `patients`[0m
+  Rendered appointments/_form.html.erb (84.2ms)
+  Rendered appointments/new.html.erb within layouts/application (85.2ms)
+  Rendered shared/_navbar.html.erb (0.5ms)
+Completed 200 OK in 111ms (Views: 102.8ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2020-02-05 21:07:21 +0530
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mDoctor Load (0.5ms)[0m  [1m[34mSELECT `doctors`.* FROM `doctors`[0m
+  [1m[36mPatient Load (0.3ms)[0m  [1m[34mSELECT `patients`.* FROM `patients`[0m
+  [1m[36mAppointment Load (0.3ms)[0m  [1m[34mSELECT `appointments`.* FROM `appointments`[0m
+  Rendered home/index.html.erb within layouts/application (14.7ms)
+  Rendered shared/_navbar.html.erb (0.5ms)
+Completed 200 OK in 40ms (Views: 35.4ms | ActiveRecord: 1.8ms)
+
+
+Started POST "/appointments" for 127.0.0.1 at 2020-02-05 21:07:28 +0530
+Processing by AppointmentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"bj7uaix847Cr9mgoAysuWawab3QiSNOy/rrLTDPXA+tDjnTjysPVJy8B5UEXFv/anug/n5gbDYHvkKI75cmXyw==", "appointment"=>{"doctor_id"=>"1", "patient_id"=>"1", "diseases"=>"qwerty", "appointment_date(1i)"=>"2020", "appointment_date(2i)"=>"2", "appointment_date(3i)"=>"5", "appointment_time(1i)"=>"2020", "appointment_time(2i)"=>"2", "appointment_time(3i)"=>"5", "appointment_time(4i)"=>"15", "appointment_time(5i)"=>"23"}, "commit"=>"Submit"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDoctor Load (0.4ms)[0m  [1m[34mSELECT  `doctors`.* FROM `doctors` WHERE `doctors`.`id` = 1 LIMIT 1[0m
+  [1m[36mPatient Load (0.3ms)[0m  [1m[34mSELECT  `patients`.* FROM `patients` WHERE `patients`.`id` = 1 LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO `appointments` (`doctor_id`, `patient_id`, `diseases`, `created_at`, `updated_at`, `appointment_date`, `appointment_time`) VALUES (1, 1, 'qwerty', '2020-02-05 15:37:28', '2020-02-05 15:37:28', '2020-02-05 00:00:00', '2020-02-05 15:23:00')[0m
+  [1m[35m (39.9ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 62ms (ActiveRecord: 41.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2020-02-05 21:07:28 +0530
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mDoctor Load (0.4ms)[0m  [1m[34mSELECT `doctors`.* FROM `doctors`[0m
+  [1m[36mPatient Load (0.3ms)[0m  [1m[34mSELECT `patients`.* FROM `patients`[0m
+  [1m[36mAppointment Load (0.8ms)[0m  [1m[34mSELECT `appointments`.* FROM `appointments`[0m
+  [1m[36mDoctor Load (0.6ms)[0m  [1m[34mSELECT  `doctors`.* FROM `doctors` WHERE `doctors`.`id` = 1 LIMIT 1[0m
+  [1m[36mPatient Load (0.5ms)[0m  [1m[34mSELECT  `patients`.* FROM `patients` WHERE `patients`.`id` = 1 LIMIT 1[0m
+  Rendered home/index.html.erb within layouts/application (18.2ms)
+  Rendered shared/_navbar.html.erb (0.5ms)
+Completed 200 OK in 40ms (Views: 34.7ms | ActiveRecord: 3.0ms)
+
+
+  [1m[35m (0.5ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[36mPatient Load (4.0ms)[0m  [1m[34mSELECT  `patients`.* FROM `patients` ORDER BY `patients`.`id` DESC LIMIT 1[0m
+  [1m[36mPatient Load (0.5ms)[0m  [1m[34mSELECT  `patients`.* FROM `patients` ORDER BY `patients`.`id` DESC LIMIT 1[0m
+  [1m[36mAppointment Load (0.5ms)[0m  [1m[34mSELECT  `appointments`.* FROM `appointments` WHERE `appointments`.`patient_id` = 1 LIMIT 11[0m
+  [1m[36mPatient Load (20.2ms)[0m  [1m[34mSELECT  `patients`.* FROM `patients` INNER JOIN `appointments` ON `appointments`.`patient_id` = `patients`.`id` LIMIT 11[0m
